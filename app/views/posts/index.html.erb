@@ -1,4 +1,4 @@
-<header>
+<!-- <header>
   <div class="header-logo">
     <a href="/">TiteetApp</a>
   </div>
@@ -7,15 +7,19 @@
       <a href="/about">TiteetAppとは</a>
     </li>
   </ul>
-</header>
-
+</header> -->
+<!-- <%
+posts = [
+  "今日からProgateでRailsの勉強するよー！" ,
+  "hogehoge"
+]
+%> -->
 <div class="main posts-index">
   <div class="container">
-    <div class="posts-index-item">
-      今日からProgateでRailsの勉強するよー！
-    </div>
-    <div class="posts-index-item">
-      hogehoge
-    </div>
+    <% @posts.each do |post| %>
+      <div class="posts-index-item">
+        <%= post.content %>
+      </div>
+    <% end %>
   </div>
 </div>
