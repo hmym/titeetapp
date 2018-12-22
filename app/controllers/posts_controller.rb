@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    # binding.pry
     @post = Post.find_by(id: params[:id])
   end
 
@@ -12,6 +13,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    # binding.pry
     @post = Post.new(content: params[:content])
     if @post.save
       redirect_to("/posts/index")
