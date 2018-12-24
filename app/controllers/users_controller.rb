@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     @user.name = params[:name]
     @user.email = params[:email]
-    
+
     if params[:image]
       @user.image_name = "#{@user.id}.jpg"
       image = params[:image]
@@ -47,6 +47,27 @@ class UsersController < ApplicationController
       # redirect_to user_show_path(@user)
     else
       render("/users/edit")
+    end
+  end
+
+  def login_form
+
+  end
+
+  def login
+    @user = User.find_by(
+      email: params[:email],
+      password: params[:password]
+    )
+    if @user
+      session[:user_id] = @user.id
+      flash[:notice] = "ログインしました"
+      redirect_to("/posts/index")
+    else
+      @email = params[:email]
+      @password = params[:password]
+      @error_message = "メールアドレスまたはパスワードが間違っています"
+      render("/users/login_form")
     end
   end
 end
